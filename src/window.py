@@ -1,16 +1,15 @@
-import sys
-
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QSlider, QLabel, QHBoxLayout, QLineEdit
 from PyQt5.QtCore import Qt
 
 from lab1 import RotationWidget
 
-from window import Window
-
-class MainWindow(QMainWindow):
+class Window(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.rotating_object_relative_to_a_point_ui()
+
+    def rotating_object_relative_to_a_point_ui(self):
         self.setWindowTitle("Поворот объекта относительно точки")
         self.setFixedSize(500, 500)
 
@@ -61,9 +60,3 @@ class MainWindow(QMainWindow):
             self.rotation_widget.update_center_of_rotation(x, y)
         except ValueError:
             pass
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = Window()
-    window.show()
-    sys.exit(app.exec_())
